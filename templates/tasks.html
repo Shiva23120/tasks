@@ -1,0 +1,67 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- Main Section -->
+<main class="projects">
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>Search for <span>Tasks</span></h2>
+            </div>
+
+            <div class="hero-section__search">
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <p>filter the blogs according to category</p>
+                
+                    {% for field in form %}
+                                <!-- Input:Text -->
+                                <div class="form__field">
+                                    <label for="formInput#text">{{field.label}}</label>
+                                    {{field}}
+                                </div>
+                                {% endfor %}
+                    <a class="btn btn--sub btn--lg  my-md" href="{% url 'tasks' %}"> Refresh </a>
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Confirm" />
+                   
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+        <div class="container">
+            <div class="grid grid--three">
+
+                {% for task in tasks %}
+                <div class="column">
+                    <div class="card project">
+                        <a href="{% url 'task' task.id %}" class="project">
+                           
+                            <div class="card__body">
+                                <h3 class="project__title">{{task.title}}</h3>
+                                <p><a class="input input--text" href="">
+                                        {{task.description}}</a>
+                                </p>
+                               
+                               
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    
+    
+</main>
+
+
+
+
+{% endblock %}
