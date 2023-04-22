@@ -12,4 +12,4 @@ A simple web application using React (Front End) & Django.(Back End)
 
 <h1 align="center">Registration form</h1>
 
-<img src="" />
+<img src="Screenshot 2023-04-22 220159.png" />
